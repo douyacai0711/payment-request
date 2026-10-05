@@ -4,3 +4,5 @@
 
 .record>div:first-child{min-width:0;flex:1 1 280px;overflow-wrap:anywhere}
 
+
+#record-editor{width:min(740px,calc(100% - 32px));max-height:85vh;overflow:auto}#edit-error{color:#a33225}.record>div:first-child{flex:1;min-width:0;overflow-wrap:anywhere}.record>button{flex-shrink:0}
