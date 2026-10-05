@@ -6,22 +6,23 @@
 
 ## 与 Windows 版的差异
 
-- 不再依赖安装 Microsoft Excel。Excel 和 PDF/PNG 的版式根据原模板字段布局重新实现，金额大写由网页计算后写入。
+- 不再依赖安装 Microsoft Excel。Excel 直接使用原始模板，只替换申请字段，保留样式、合并、行高列宽、打印设置和金额大写公式。PDF/PNG 按模板样式与打印比例渲染，字体度量可能与 Excel 略有差异。
 - PDF 是可打印的高清图片型 PDF，不包含可选择的文本。
 - 多格式通过一个 ZIP 下载；下载位置与同名文件处理由浏览器决定。
 - OCR 使用浏览器 Tesseract.js 中文与英文模型，精度可能与原 RapidOCR 不同，须核对后应用。首次使用联网下载公开模型，图片在本机处理。
 - 浏览器与设备之间不自动同步。清除网站数据会删除记录，请定期使用历史页的备份功能。
-- Windows 版的历史数据库、账户、默认公司名、识图样例没有放入网站。Excel 原文件包含示例账户，因此没有原样发布。
+- Windows 版的历史数据库、账户、默认公司名、识图样例没有放入网站。Excel 原文件中的示例账户和申请信息已清空，再以原格式空白模板发布。
 
 ## 发布
 
-上传 index.html、style.css、app.js 和 vendor/，使用 main 分支根目录发布 GitHub Pages。
+上传 index.html、style.css、app.js、template.xlsx、template-model.js、template-renderer.js 和 vendor/，使用 main 分支根目录发布 GitHub Pages。
 
 本地预览：`python -m http.server 8766 --bind 127.0.0.1`。
 
 ## 第三方库
 
 - ExcelJS 4.4.0（MIT）：https://github.com/exceljs/exceljs
+- JSZip 3.10.1（MIT）：https://github.com/Stuk/jszip
 - jsPDF 2.5.2（MIT）：https://github.com/parallax/jsPDF
 - Tesseract.js 5.1.1（Apache-2.0）：https://github.com/naptha/tesseract.js
 
