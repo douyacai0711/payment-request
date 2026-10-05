@@ -3,7 +3,7 @@ const $=id=>document.getElementById(id);
 const FIELDS={application_date:'填写日期',expense_unit:'报销单位',payee:'收款单位',account:'账号',bank:'开户行',amount:'金额',reason:'付款原因',attachments:'附件张数',maker:'制单人'};
 const KEY='payment-request-browser-v1';
 const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
-const defaults=()=>({application_date:today(),expense_unit:'',payee:'',account:'',bank:'',amount:'',reason:'',attachments:'1',maker:'',team:''});
+const defaults=()=>({application_date:today(),expense_unit:'深圳春风米逸科技有限公司',payee:'',account:'',bank:'',amount:'',reason:'',attachments:'1',maker:'',team:''});
 let state={version:1,history:[],contacts:[],draft:null},readable=true,activeId=null,busy=false,ocrValues=null,ocrURL=null;
 const tell=text=>{$('message').textContent=text;};
 function cents(text){if(!/^\d+(\.\d{1,2})?$/.test(text))throw Error('金额须为正数，且最多保留两位小数。');const [a,b='']=text.split('.');return BigInt(a)*100n+BigInt(b.padEnd(2,'0'));}
