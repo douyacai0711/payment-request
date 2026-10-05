@@ -4,6 +4,18 @@
 
 支持填写、金额大写、Excel/PDF/PNG 导出、ZIP 多格式导出、草稿、历史重载、30 天重复提示、收款方通讯录、月度与收款方汇总、CSV、JSON 备份恢复及红框图片 OCR。
 
+## 从桌面版迁移数据
+
+1. 关闭桌面版软件，找到它旁边的 `付款申请书数据` 文件夹。
+2. 在网站“历史记录”页点击“导入桌面版数据”。
+3. 选择 `history.sqlite3` 可以导入历史申请、收款方和可选草稿；选择整个数据文件夹，或把该文件夹压缩为 ZIP 后选择，可以同时迁移 `exports` 中的原始 Excel、PDF 和 PNG。
+4. 查看新增、重复、无效记录与原始文件的数量，确认后合并。相同桌面记录编号再次导入时会跳过，不覆盖已存在的申请。现有网页草稿保留，桌面草稿可在网页没有草稿时选择恢复。
+5. 导入的申请可载入后继续填写；历史页的“下载原始”按钮可下载之前的文件。
+
+数据库与图片都在本机处理，不会上传。长历史文本完整保存，不完整的通讯录账户可以保留。异常记录会在确认前列出并跳过。数据库上限 50 MB；ZIP 上限 100 MB，解压总大小上限 250 MB；单个原始文件上限 50 MB，单次最多 20000 条申请。
+
+原始文件存入浏览器 IndexedDB，申请与通讯录仍保存在 localStorage。清除网站数据会删除这些内容。存在原始文件时，“备份浏览器数据”生成含申请和原文件的 ZIP，可通过“恢复备份”恢复；没有原文件时仍生成 JSON。请保留桌面版原数据作为额外备份。
+
 ## 与 Windows 版的差异
 
 - 不再依赖安装 Microsoft Excel。Excel 直接使用原始模板，只替换申请字段，保留样式、合并、行高列宽、打印设置和金额大写公式。PDF/PNG 按模板样式与打印比例渲染，字体度量可能与 Excel 略有差异。
@@ -23,6 +35,7 @@
 
 - ExcelJS 4.4.0（MIT）：https://github.com/exceljs/exceljs
 - JSZip 3.10.1（MIT）：https://github.com/Stuk/jszip
+- sql.js 1.13.0（MIT）：https://github.com/sql-js/sql.js
 - jsPDF 2.5.2（MIT）：https://github.com/parallax/jsPDF
 - Tesseract.js 5.1.1（Apache-2.0）：https://github.com/naptha/tesseract.js
 
